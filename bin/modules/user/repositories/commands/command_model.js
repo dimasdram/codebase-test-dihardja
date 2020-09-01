@@ -12,7 +12,18 @@ const register = joi.object({
   cpassword: joi.valid(joi.ref('password')).required()
 });
 
+const updateUser = joi.object({
+  userId: joi.string().required(),
+  name: joi.string().allow(''),
+  email: joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).allow(''),
+  password: joi.string().min(8).allow(''),
+  cpassword: joi.valid(joi.ref('password')),
+  role: joi.string().allow('').default('user'),
+});
+
+
 module.exports = {
   login,
-  register
+  register,
+  updateUser
 };

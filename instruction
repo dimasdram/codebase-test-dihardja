@@ -1,0 +1,19 @@
+Untuk cara install dapat dilihat pada readme.md
+
+untuk encryption saya menggunakan RSA dengan private.pem dam public.pem yang telah di generate
+
+api terbagi menjadi 2, user dan article, dengan port 9000
+api user:
+  Login: localhost:9000/api/users/v1
+  register: localhost:9000/api/users/v1/register
+  get user by id : localhost:9000/api/users/v1/1
+  edit user by id : localhost:9000/api/users/v1/1
+api article:
+  Create: localhost:9000/api/articles/v1/create
+  Read: localhost:9000/api/articles/v1/1
+  Update: localhost:9000/api/articles/v1/edit/:id
+  Delete: localhost:9000/api/articles/v1/delete/:id
+
+Aplikasi ini sudah menggunakan cloud database, sehingga tidak perlu lagi untuk
+mengimport data sql, jika diperlukan dapat mengimport file ataupun port forward dari
+postgress pada env yang telah dibuat

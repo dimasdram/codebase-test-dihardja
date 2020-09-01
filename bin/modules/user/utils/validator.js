@@ -38,10 +38,23 @@ const register = (payload) => {
   return response;
 };
 
-
+const editUser = (payload) => {
+  let response = {};
+  let temp = [];
+  if (!payload) {
+    temp = ['id','email', 'password'];
+  } else {
+    if (!payload.id) { temp.push('id'); }
+    if (!payload.article_name) { temp.push('article_name'); }
+    if (!payload.creator) { temp.push('creator'); }
+  }
+  response.message = { requiredField: temp };
+  return response;
+};
 
 module.exports = {
   isValidPayload,
   login,
-  register
+  register,
+  editUser,
 };

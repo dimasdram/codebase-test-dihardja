@@ -10,6 +10,10 @@ class Command {
     const result = await queryBuilder.insertData(tblUsers, parameter, returningTblUsers);
     return result;
   }
+  async updateUser(tblName, newData, where, returningTblName) {
+    const result = await queryBuilder.updateData(tblName, newData, where, returningTblName);
+    return result;
+  }
 }
 
 module.exports = Command;

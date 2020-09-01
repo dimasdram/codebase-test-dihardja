@@ -56,7 +56,6 @@ class User {
     if (user.length > 0) {
       return wrapper.error(new ConflictError('user already exist'));
     }
-
     const chiperPwd = await commonUtil.encrypt(password, algorithm, secretKey);
     const data = {
       id: uuid().toString(),
@@ -65,15 +64,39 @@ class User {
       role:'user',
       password: chiperPwd
     };
-
     const addData = await this.command.addUser(tblUsers, data, returningTblUsers);
     if (addData.err == 'fail'){
       return wrapper.error(new InternalServerError('internal server error'));
     }
-
     const result = addData.data;
-
     return wrapper.data(result);
+  }
+
+  async updateUser(payload) {
+    const ctx = 'domain-updateUser';
+    const { name, email, password, role, userId} = payload;
+    const tblUsers = constant.tblUsers;
+    const returningTblUsers = constant.fieldTblUsers;
+    const user = await this.query.getUserByFilter(tblUsers, returningTblUsers, { id: userId });
+    if (user.length == 0) {
+      logger.log(ctx, 'user not found', 'user not found');
+      return wrapper.error(new NotFoundError('user not found'));
+    }
+    const chiperPwd = await commonUtil.encrypt(password, algorithm, secretKey);
+    const data = {
+      name: name != '' ? name : user[0].name,
+      role: role != '' ? role : user[0].role,
+      email: email != '' ? email : user[0].email,
+      password: chiperPwd != '' ? chiperPwd : user[0].password
+    };
+    const whereFilter = {
+      id: userId
+    };
+    const updateData = await this.command.updateUser(tblUsers, data, whereFilter, returningTblUsers);
+    if (updateData.err == 'fail') {
+      return wrapper.error(new ConflictError('error update'));
+    }
+    return wrapper.data(data);
   }
 
 }

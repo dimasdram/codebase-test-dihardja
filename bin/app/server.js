@@ -45,6 +45,7 @@ function AppServer() {
   this.server.post('/api/users/v1', basicAuth.isAuthenticated, userHandler.postDataLogin);
   this.server.get('/api/users/v1/:id', jwtAuth.verifyToken, userHandler.getUserById);
   this.server.post('/api/users/v1/register', basicAuth.isAuthenticated, userHandler.registerUser);
+  this.server.put('/api/users/v1/:id', jwtAuth.verifyToken, userHandler.updateUser);
   // Article
   this.server.get('/api/articles/v1/:id', jwtAuth.verifyToken, articleHandler.getArticleById);
   this.server.post('/api/articles/v1/create', jwtAuth.verifyToken, articleHandler.createArticle);

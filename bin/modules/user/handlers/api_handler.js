@@ -61,8 +61,31 @@ const registerUser = async (req, res) => {
 };
 
 
+const updateUser = async (req, res) => {
+  const payload = {
+    userId: req.params.id,
+    ...req.body
+  };
+  const validatePayload = validator.isValidPayload(payload, commandModel.updateUser);
+  const postRequest = async (result) => {
+    if (result.err) {
+      return result;
+    }
+    return commandHandler.updateUser(result.data);
+  };
+  const sendResponse = async (result) => {
+    /* eslint no-unused-expressions: [2, { allowTernary: true }] */
+    (result.err) ? wrapper.response(res, 'fail', result, 'Fail Update User', httpError.CONFLICT)
+      : wrapper.response(res, 'success', result, 'Update User', http.OK);
+  };
+  sendResponse(await postRequest(validatePayload));
+};
+
+
+
 module.exports = {
   postDataLogin,
   getUserById,
   registerUser,
+  updateUser
 };
