@@ -38,9 +38,6 @@ describe('Mongo Connection', () => {
   it('should create connection', () => {
     mongoConnection.init();
   });
-  it('should cover unavailable connection config', () => {
-    mongoConnection.getConnection('mongodb://localhost:27019/notfounddb');
-  });
   it('should get connection if exist', async () => {
     expect(await mongoConnection.getConnection(config.get('/mongoDbUrl')))
       .to.haveOwnProperty('data').to.be.an('object');

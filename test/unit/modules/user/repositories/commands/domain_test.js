@@ -11,12 +11,12 @@ describe('User-domain', () => {
 
   const queryResult = [{
     'id':'dimas-123',
-    'password':'dimasdram-123123-123132'
+    'password':'dimasdram..'
   }];
 
   const payload = {
-    'username': 'dimasdram',
-    'password': 'dimasdram'
+    'mail': 'dimasramrul@gmail.com',
+    'password': 'dimasdram..'
   };
 
   const db = {
