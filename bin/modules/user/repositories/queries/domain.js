@@ -23,6 +23,7 @@ class User {
       let userResponse = {};
       userResponse.id = data.id;
       userResponse.email = data.email;
+      userResponse.name = data.name;
       userResponse.role = data.role;
       return userResponse;
     });
