@@ -1,7 +1,6 @@
 const User = require('../../../../../../bin/modules/user/repositories/queries/domain');
 const query = require('../../../../../../bin/modules/user/repositories/queries/query');
 const sinon = require('sinon');
-// const assert = require('assert');
 
 
 describe('viewUser', () => {
@@ -17,7 +16,7 @@ describe('viewUser', () => {
     let queryResult = {
       'err': null,
       'data': {
-        '_id': '5bac53b45ea76b1e9bd58e1c',
+        'id': '5bac53b45ea76b1e9bd58e1c',
         'username': 'dimasdram',
         'password': '8789ad457ac341e4fc4cad32'
       }
