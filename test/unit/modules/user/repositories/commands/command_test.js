@@ -1,4 +1,3 @@
-const assert = require('assert');
 const sinon = require('sinon');
 
 const Command = require('../../../../../../bin/modules/user/repositories/commands/command');
@@ -21,7 +20,7 @@ describe('User-command', () => {
         insertOne: sinon.stub().resolves(queryResult),
         setCollection: sinon.stub()
       };
-      const command = new Command(db);
+      new Command(db);
     });
   });
 

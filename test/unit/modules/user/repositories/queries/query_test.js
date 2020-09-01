@@ -1,5 +1,3 @@
-
-// const assert = require('assert');
 const sinon = require('sinon');
 
 const query = require('../../../../../../bin/modules/user/repositories/queries/query');

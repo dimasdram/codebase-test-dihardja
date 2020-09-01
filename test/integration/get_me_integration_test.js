@@ -82,11 +82,8 @@ describe('Get Me', () => {
         if(err){
           throw err;
         }
-
         let obj = JSON.parse(body);
         assert.equal(obj.status, result.status);
-        // assert.equal(obj.data.username, result.data.username);
-
         db.prototype.findOne.restore();
         user.prototype.viewUser.restore();
         done();
@@ -111,11 +108,7 @@ describe('Get Me', () => {
         if(err){
           throw err;
         }
-
-        const result = JSON.parse(body);
-        // assert.equal(result.code, 403);
-        // assert.equal(result.data, '');
-
+        JSON.parse(body);
         db.prototype.findOne.restore();
         user.prototype.viewUser.restore();
         done();

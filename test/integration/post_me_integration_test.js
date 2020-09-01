@@ -1,5 +1,4 @@
 const hippie = require('hippie');
-const assert = require('assert');
 const sinon = require('sinon');
 process.env.MONGO_DATABASE_URL='mongodb://localhost:27017/domain';
 process.env.PORT=9000;
@@ -84,9 +83,6 @@ describe('Login Me', () => {
       .send(payload)
       .expectStatus(201)
       .end((err, res, body) => {
-        // assert.equal(body.success, true);
-        // assert.equal(body.code, 200);
-
         commandHandler.postDataLogin.restore();
         done();
       });
