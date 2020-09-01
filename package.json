@@ -1,0 +1,104 @@
+{
+  "name": "package.js",
+  "version": "1.0.0",
+  "description": "codebase-dimas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "junit": "_mocha \"test/**/*_test.js\" --timeout=5000 --reporter mocha-junit-reporter",
+    "test": "mocha \"test/**/*_test.js\" --timeout=5000 --exit",
+    "cover": "nyc _mocha \"test/**/*_test.js\" --recursive --exit",
+    "lint": "eslint bin test",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimasdram/codebase.git"
+  },
+  "keywords": [
+    "codebase",
+    "dimas",
+    "nodejs"
+  ],
+  "author": "Dimas Ramadhan Amrulloh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimasdram/codebase/issues"
+  },
+  "homepage": "https://github.com/dimasdram/codebase#readme",
+  "dependencies": {
+    "aws-sdk": "^2.304.0",
+    "azure-storage": "^2.10.3",
+    "confidence": "^3.0.2",
+    "coverage": "^0.4.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "elasticsearch": "^15.4.1",
+    "events": "1.1.1",
+    "joi": "^14.0.1",
+    "jsftp": "2.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb": "^3.1.10",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.19.0",
+    "passport": "0.4.0",
+    "passport-http": "0.3.0",
+    "pg": "^7.11.0",
+    "query-string": "5.0.1",
+    "raven": "2.2.1",
+    "request": "^2.88.0",
+    "request-promise": "4.2.2",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
+    "restify-errors": "^8.0.0",
+    "rewire": "^4.0.1",
+    "serve-static-restify": "^3.0.0",
+    "test": "^0.6.0",
+    "util": "0.10.3",
+    "uuid": "^3.4.0",
+    "validate.js": "0.12.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "chai": "^4.2.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "hippie": "^0.5.2",
+    "istanbul": "^0.4.5",
+    "lint": "^0.7.0",
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.17.0",
+    "nyc": "^14.1.1",
+    "pre-commit": "^1.2.2",
+    "sinon": "^4.5.0",
+    "sonarlint": "^1.1.0"
+  },
+  "nyc": {
+    "lines": 10,
+    "statements": 10,
+    "functions": 10,
+    "branches": 10,
+    "check-coverage": true,
+    "include": [
+      "bin/**/*.js"
+    ],
+    "exclude": [
+      "index.js",
+      "bin/api/app/server.js"
+    ],
+    "reporter": [
+      "html",
+      "text",
+      "lcov",
+      "text-summary"
+    ],
+    "all": true,
+    "cache": true,
+    "report-dir": "./coverage"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
